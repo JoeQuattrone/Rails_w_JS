@@ -1,3 +1,8 @@
+<%= form_tag "/hotels" do %>
+  <%= text_field_tag "hotel[city]", nil, placeholder: "City" %>
+  <%= number_field_tag "hotel[budget]", nil, placeholder: "Budget" %>
+  <%= submit_tag "search" %>
+<% end %>
 <div class="container hotels-wrapper">
   <% @hotels.all.each do |hotel| %>
     <div class="row hotel-row">
