@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row hotel-row-show align-items-center">
+    <div class="col-sm">
+      <%= image_tag (@hotel.image_url), alt: "#{@hotel.name}" %>
+    </div>
+    <div class="col-md-6">
+      <h4 class="black-text"><%= @hotel.name %></h4>
+      <p><%= @hotel.city.upcase %></p>
+      <p><%= @hotel.address %></p>
+    </div>
+    <div class="col-sm">
+      <h2 class="price">&#36;<%= @hotel.price %></h2>
+      <p>per night</p>
+      <a href="<%= hotel_path(@hotel) %>">
+      </a>
+    </div>
+  </div>
+
+  <div>
+    <h5 class="text-center col-md-12">See If It's Available.</h5>
+    <div class="availablity-form text-center">
+      <% if flash[:message] %>
+        <div class="field-with-errors"><%= flash[:message] %></div>
+      <% end %>
+
+      <%= form_tag ("/hotels/#{@hotel.id}/visits/new"), class: "clearfix avail-form" do %>
+      <div class="form-group avail-input" id="first-input">
+        <%= label_tag(:check_in, "Check in") %>
+        <%= text_field_tag :check_in, nil, placeholder: "mm/dd/yy", class: "form-control" %>
+      </div>
+      <div class="form-group avail-input">
+        <%= label_tag(:check_out, "Check out") %>
+        <%= text_field_tag :check_out, nil, placeholder: "mm/dd/yy", class: "form-control"  %>
+      </div>
+      <div class="form-group" id="last-fg">
+        <%= submit_tag "Search", class: "btn btn-primary", id: "avail-submit" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,125 @@
+//General Hotels Styles //
+header#hotels-header {
+  position: relative;
+  background-image: linear-gradient( rgb(8,79,124), rgb(64,107,140) );
+}
+
+//height of header //
+#hotels-nav > div > div {
+  height: 120px;
+}
+
+.disabled {
+  cursor: text;
+}
+
+
+// hotels index page //
+h2.price {
+  color: #2e2e2e;
+}
+
+.hotel-link {
+  // color: #1371b9;
+  color: #2e2e2e;
+  // color: #10507a;
+}
+
+.hotel-link:hover {
+  // color:  #1371b9;
+  color:  #007bff;
+}
+
+.hotels-wrapper {
+  margin-top: 10%;
+}
+
+.hotel-image-wrapper {
+  float: left;
+  margin-right: 10px;
+}
+
+.right-align {
+  float: right;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+div.hotel-row {
+  margin-bottom: 8%;
+}
+
+
+// hotels show page //
+.hotel-row-show {
+  margin-top: 8%;
+  margin-bottom: 8%;
+}
+
+.availablity-form {
+  margin-top: 2%;
+}
+
+.avail-input {
+  float: left;
+  width: 30%;
+  margin-left: 2%;
+}
+
+#first-input {
+  margin-left: 18%;
+}
+
+#avail-submit {
+  width: 100%;
+
+}
+
+// div that controls the check availability button
+#last-fg {
+  margin-top: 29px;
+  margin-left: 2%;
+  width: 10%;
+  float: left;
+}
+
+
+
+
+
+// hotels/id/visits/new page //
+body > div > div.container > div.availablity-form.text-center > h4 {
+  margin-bottom: 3%;
+}
+
+body > div > div.container > div.availablity-form.text-center > h5 {
+  margin-bottom: 1.8%;
+}
+
+
+
+
+// users/id/visits/id  //
+.flash-field {
+  color: rgb(80, 173, 85);
+}
+#home-btn {
+  padding: .375rem 1.8rem;
+}
+
+
+
+
+// Meadia quries for responsiveness //
+@media only screen and (max-width: 1000px) {
+  #last-fg {
+    float: none;
+    width: 50%;
+    margin: 0 auto;
+    clear:both;
+  }
+}

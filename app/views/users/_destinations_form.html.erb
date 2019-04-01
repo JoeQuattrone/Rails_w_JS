@@ -1,0 +1,5 @@
+<%= form_tag ("/hotels"), method: "post", class: "home_search_form", id: "home_search_form" do %>
+  <%= hidden_field_tag "hotel[city]", city %>
+  <%= hidden_field_tag "hotel[budget]", "" %>
+  <%= submit_tag city, class: "destination_title destination-form"%>
+<% end %>

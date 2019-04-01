@@ -1,0 +1,22 @@
+<div class="container hotels-wrapper">
+  <% @hotels.all.each do |hotel| %>
+    <div class="row hotel-row">
+      <div class="col-sm">
+        <%= image_tag (hotel.image_url), alt: "#{hotel.name}" %>
+      </div>
+      <div class="col-md-6">
+        <a href="<%= hotel_path(hotel) %>" class="hotel-link">
+          <h4><%= hotel.name %></h4>
+          <p><%= hotel.city.upcase %></p>
+          <p><%= hotel.address %></p>
+        </a>
+      </div>
+      <div class="col-sm">
+        <h2 class="price">&#36;<%= hotel.price %></h2>
+        <p>per night</p>
+        <a href="<%= hotel_path(hotel) %>">
+        </a>
+      </div>
+    </div>
+  <% end %>
+</div>

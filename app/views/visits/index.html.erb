@@ -1,0 +1,10 @@
+<div class="container user-profile" >
+  <h5 class="text-right"><%= link_to "Back", user_path(@user)%></h5>
+  <h1 class="text-center">My Trips</h1>
+  <hr>
+  <ol>
+    <% @visits.each do |visit| %>
+      <h4><li><%= format_start_visit(visit) %> - <%= format_end_visit(visit) %>: <%= link_to visit.hotel.name, user_visit_path(@user, visit)%></li></h4>
+    <% end %>
+  </ol>
+</div>

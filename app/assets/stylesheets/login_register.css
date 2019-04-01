@@ -1,0 +1,33 @@
+/*  login & register styles */
+body > div > div.login-register {
+  font-family: 'Oswald';
+  margin-top: 8%;
+}
+
+.card-block {
+  padding: 2.5%;
+}
+
+.facebook-container {
+  padding: 2.5%;
+}
+
+body > div > div.container.login-register > div.facebook-container > h4 {
+  float: left;
+}
+
+
+body > div > div.container.login-register > div.facebook-container > h6 {
+  float: right;
+  line-height: 37px;
+}
+
+
+/*  My profile styles */
+.user-profile {
+  margin-top: 4%;
+}
+
+label {
+  color: #72728c;
+}

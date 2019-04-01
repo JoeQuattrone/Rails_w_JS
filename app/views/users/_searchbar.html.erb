@@ -1,0 +1,10 @@
+<%= form_tag ("/hotels"), method: "post", class: "home_search_form", id: "home_search_form" do %>
+<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+    <%= text_field_tag "hotel[city]", "", class: 'search_input search_input_1', placeholder: "City", required: "required" %>
+    <%= text_field_tag "visit[start_visit]", "", class: 'search_input search_input_2', placeholder: "Check in", disabled: true %>
+    <%= text_field_tag "visit[end_visit]", "", class: 'search_input search_input_3', placeholder: "Check out", disabled: true %>
+
+    <%= number_field_tag "hotel[budget]", "", class: 'search_input search_input_4', placeholder: "Budget" %>
+    <%= submit_tag "Search", class: "home_search_button"%>
+  </div>
+<% end %>

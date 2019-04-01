@@ -1,0 +1,40 @@
+<div class="container login-register">
+  <% if flash[:message] %>
+    <h5 class="field-with-errors"><%= flash[:message] %></h5>
+  <% end %>
+
+  <div class="card">
+    <div class="card-block">
+
+      <h2>Sign in</h2>
+      <%= form_tag '/login' do %>
+        <div class="row">
+          <div class ="col-md-6">
+            <div class="form-group">
+              <%= label_tag :email %><br />
+              <%= email_field_tag :email, nil, autocomplete: "email", class: 'form-control' %>
+            </div>
+          </div>
+          <div class ="col-md-6">
+            <div class="form-group">
+              <%= label_tag :password %>
+              <br />
+              <%= password_field_tag :password, nil, autocomplete: "new-password", class: 'form-control' %>
+            </div>
+          </div>
+          <div class ="col-md-10"></div>
+          <div class ="col-md-2">
+            <div class="form-group">
+              <%= submit_tag "Sign in", class: 'btn btn-primary btn-block' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+  <div class="facebook-container">
+    <h4>Or <%= link_to('Sign in with Facebook!', '/auth/facebook') %></h4>
+  </div>
+</div>

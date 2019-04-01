@@ -1,0 +1,31 @@
+<div class="container">
+  <% if flash[:message] %>
+    <h3 class="flash-field text-center"><%= flash[:message]%></h3>
+  <% end %>
+  <div class="row hotel-row-show align-items-center">
+    <hr>
+    <div class="col-sm">
+      <%= image_tag (@hotel.image_url), alt: "#{@hotel.name}" %>
+    </div>
+    <div class="col-md-6">
+      <h4><%= @hotel.name %></h4>
+      <p><%= @hotel.city.upcase %></p>
+      <p><%= @hotel.address %></p>
+    </div>
+    <div class="col-sm">
+      <h2>&#36;<%= @hotel.price %></h2>
+      <p>per night</p>
+      <a href="<%= hotel_path(@hotel) %>">
+      </a>
+    </div>
+  </div>
+
+  <h4 class="text-center">From</h4>
+  <div class="availablity-form text-center">
+    <h5><%= format_start_visit(@visit) %> - <%= format_end_visit(@visit) %></h5>
+
+    <%= form_tag ("/users/#{@user.id}/visits/#{@visit.id}"), method: "delete" do %>
+      <%= link_to "MY TRIPS", user_visits_path(@user, @user.visits), class: "btn btn-primary", id: "home-btn" %>
+      <%= submit_tag "DELETE TRIP", class: "btn btn-danger" %>
+    <% end %>
+  </div>

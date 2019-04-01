@@ -1,0 +1,333 @@
+<!-- Home -->
+	<div class="home">
+
+		<!-- Home Slider -->
+		<div class="home_slider_container">
+			<div class="owl-carousel owl-theme home_slider">
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<%= content_tag :div, "", class: "background_image" %>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you away</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<%= content_tag :div, "", class: "background_image" %>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you away</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Slide -->
+				<div class="owl-item">
+					<%= content_tag :div, "", class: "background_image" %>
+					<div class="home_slider_content_container">
+						<div class="container">
+							<div class="row">
+								<div class="col">
+									<div class="home_slider_content">
+										<div class="home_title"><h2>Let us take you away</h2></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!-- Search -->
+	<div class="home_search">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="home_search_container">
+						<% if flash[:message] %>
+							<div class="field-with-errors text-center">
+								<h6><%= flash[:message]%></h6>
+							</div>
+						<% end %>
+						<div class="home_search_title">Search for your hotel</div>
+						<div class="home_search_content">
+							<%= render "users/searchbar" %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Intro -->
+	<div class="intro">
+    <%= content_tag :div, "", class: "intro_background" %>
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="intro_container">
+						<div class="row">
+
+							<!-- Intro Item -->
+							<div class="col-lg-4 intro_col">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><%= image_tag("beach.svg") %></div>
+									<div class="intro_content">
+										<div class="intro_title">Top Destinations</div>
+										<div class="intro_subtitle"><p>Hotels in all your favorite places.</p></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Intro Item -->
+							<div class="col-lg-4 intro_col">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><%= image_tag("wallet.svg") %></div>
+									<div class="intro_content">
+										<div class="intro_title">The Best Prices</div>
+										<div class="intro_subtitle"><p>Affordable trips for all travlers.</p></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Intro Item -->
+							<div class="col-lg-4 intro_col">
+								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
+									<div class="intro_icon"><%= image_tag("suitcase.svg") %></div>
+									<div class="intro_content">
+										<div class="intro_title">Amazing Services</div>
+										<div class="intro_subtitle"><p>We gurantee your satisfaction.</p></div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<!-- Destinations -->
+	<div class="destinations" id="destinations">
+		<div class="container">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_subtitle">simply amazing places</div>
+					<div class="section_title"><h2>Popular Destinations</h2></div>
+				</div>
+			</div>
+			<div class="row destinations_row">
+				<div class="col">
+					<div class="destinations_container item_grid">
+
+						<!-- Destination -->
+						<div class="destination item">
+							<a href="#" class="destination-link">
+							<div class="destination_image">
+								<%= image_tag("destination_1.jpg") %>
+								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+							</div>
+							<div class="destination_content">
+								<div class="destination_title">
+									<%= render partial: "destinations_form", locals: {city: "Bali"} %>
+								</div>
+								<div class="destination_subtitle"><p>Find a stunning beach in Bali.</p></div>
+								<div class="destination_price">From $379</div>
+							</div>
+							</a>
+						</div>
+
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<%= image_tag("destination_2.jpg") %>
+							</div>
+							<div class="destination_content">
+								<div class="destination_title">
+									<%= render partial: "destinations_form", locals: {city: "Thailand"} %>
+								</div>
+								<div class="destination_subtitle"><p>Explore the jungles of Thailand.</p></div>
+								<div class="destination_price">From $229</div>
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<%= image_tag("destination_3.jpg") %>
+							</div>
+							<div class="destination_content">
+								<div class="destination_title">
+									<%= render partial: "destinations_form", locals: {city: "San Francisco"} %>
+								</div>
+								<div class="destination_subtitle"><p>Home of the Golden State Bridge.</p></div>
+								<div class="destination_price">From $299</div>
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+                <%= image_tag("destination_4.jpg") %>
+							</div>
+							<div class="destination_content">
+								<div class="destination_title">
+									<%= render partial: "destinations_form", locals: {city: "Paris"} %>
+								</div>
+								<div class="destination_subtitle"><p>Book a trip to the City of Love.</p></div>
+								<div class="destination_price">From $349</div>
+							</div>
+						</div>
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<%= image_tag("destination_5.jpg") %>
+							<div class="destination_content">
+								<div class="destination_title">
+									<%= render partial: "destinations_form", locals: {city: "Fiji"} %>
+								</div>
+								<div class="destination_subtitle"><p>Escape to the remote island of Fiji.</p></div>
+								<div class="destination_price">From $439</div>
+							</div>
+						</div>
+						</div>
+
+
+						<!-- Destination -->
+						<div class="destination item">
+							<div class="destination_image">
+								<%= image_tag("destination_6.jpg") %>
+							<div class="destination_content">
+								<div class="destination_title">
+									<%= render partial: "destinations_form", locals: {city: "Santorini"} %>
+								</div>
+								<div class="destination_subtitle"><p>Relax in the Mediterranean.</p></div>
+								<div class="destination_price">From $229</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<!-- Testimonials -->
+
+
+	<!-- News -->
+
+
+	<!-- Footer -->
+	<footer class="footer">
+
+    <!-- Refactor -->
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="assets/footer_1.jpg" data-speed="0.8"></div>
+
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="newsletter">
+						<div class="newsletter_title_container text-center">
+							<div class="newsletter_title">Subscribe to our newsletter to get the latest trends & news</div>
+							<div class="newsletter_subtitle">Join our community NOW!</div>
+						</div>
+						<div class="newsletter_form_container">
+							<form action="#" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
+								<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+									<div><input type="text" class="newsletter_input newsletter_input_name" id="newsletter_input_name" placeholder="Name" required="required"><div class="input_border"></div></div>
+									<div><input type="email" class="newsletter_input newsletter_input_email" id="newsletter_input_email" placeholder="Your e-mail" required="required"><div class="input_border"></div></div>
+								</div>
+								<div><button class="newsletter_button">subscribe</button></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row footer_contact_row">
+				<div class="col-xl-10 offset-xl-1">
+					<div class="row">
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><%= image_tag "sign.svg" %></div>
+								<div class="footer_contact_title">give us a call</div>
+								<div class="footer_contact_list">
+									<ul>
+										<li>Office Landline: +44 5567 32 664 567</li>
+										<li>Mobile: +44 5567 89 3322 332</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><%= image_tag "trekking.svg" %></div>
+								<div class="footer_contact_title">come & drop by</div>
+								<div class="footer_contact_list">
+									<ul style="max-width:190px">
+										<li>4124 Barnes Street, Sanford, FL 32771</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<!-- Footer Contact Item -->
+						<div class="col-xl-4 footer_contact_col">
+							<div class="footer_contact_item d-flex flex-column align-items-center justify-content-start text-center">
+								<div class="footer_contact_icon"><%= image_tag "around.svg" %></div>
+								<div class="footer_contact_title">send us a message</div>
+								<div class="footer_contact_list">
+									<ul>
+										<li>quattrone.dev@gmail.com</li>
+										<li>joequattrone.com</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col text-center" style="color: #bbb"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --> </div>
+	</footer>
