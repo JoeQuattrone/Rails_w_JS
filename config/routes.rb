@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     resources :visits, except: [:new]
   end
 
+  post "/search", to: 'searches#index'
+  get '/allhotels', to: 'searches#all_hotels'
 
 end

@@ -1,27 +1,63 @@
-<%= form_tag "/hotels" do %>
+<%= form_tag "/search", class: "js-search" do %>
   <%= text_field_tag "hotel[city]", nil, placeholder: "City" %>
   <%= number_field_tag "hotel[budget]", nil, placeholder: "Budget" %>
   <%= submit_tag "search" %>
 <% end %>
-<div class="container hotels-wrapper">
-  <% @hotels.all.each do |hotel| %>
-    <div class="row hotel-row">
-      <div class="col-sm">
-        <%= image_tag (hotel.image_url), alt: "#{hotel.name}" %>
-      </div>
-      <div class="col-md-6">
-        <a href="<%= hotel_path(hotel) %>" class="hotel-link">
-          <h4><%= hotel.name %></h4>
-          <p><%= hotel.city.upcase %></p>
-          <p><%= hotel.address %></p>
-        </a>
-      </div>
-      <div class="col-sm">
-        <h2 class="price">&#36;<%= hotel.price %></h2>
-        <p>per night</p>
-        <a href="<%= hotel_path(hotel) %>">
-        </a>
-      </div>
-    </div>
-  <% end %>
+
+<div class="container hotels-wrapper" id="hotel-container">
+
 </div>
+
+<!-- <script type="text/javascript" charset="utf-8">
+  document.querySelector('.js-search').addEventListener('submit', function(e){
+    e.preventDefault()
+    fetch("http://localhost:3000/search", {
+    method: 'POST',
+    body: JSON.stringify(this),
+    headers:{
+    'Content-Type': 'application/json'
+    }
+  }).then(res => res.json())
+    .then(response => console.log('Success:', JSON.stringify(response)))
+  })
+</script> -->
+
+
+
+<!-- <script type="text/javascript" charset="utf-8">
+  document.querySelector('.js-search').addEventListener('submit', function(e){
+    e.preventDefault()
+    debugger
+  })
+</script> -->
+
+<script
+  src="http://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      $('form').submit(function(e) {
+        e.preventDefault()
+        document.querySelector("#hotel-container").innerHTML = ""
+        let city = $("#hotel_city").val()
+        let budget = $("#hotel_budget").val()
+        let url = "http://localhost:3000/search"
+        let data = { hotel: {
+          city: city,
+          budget: budget
+        }}
+        fetch(url, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: { 'Content-Type': 'application/json' }
+        }).then(res => res.json())
+          .then(json => json.forEach(function(hotel_data) {
+            let hotel = new Hotel(hotel_data)
+            hotel.render()
+          }))
+
+      })
+    })
+  </script>
