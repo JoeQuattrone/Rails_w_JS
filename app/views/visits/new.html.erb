@@ -19,22 +19,23 @@
     <h4 class="text-center">Hooray! These dates are available.</h4>
     <div class="availablity-form text-center">
       <% if @visit.start_visit %>
-      <h5><%= format_start_visit(@visit) %> - <%= format_end_visit(@visit) %></h5>
+        <h5><%= format_start_visit(@visit) %> - <%= format_end_visit(@visit) %></h5>
       <% end %>
-
-      <% if current_user %>
-      <%= form_for(@visit, url: "#", html: {id: "create-visit"}) do |f| %>
-      <%= f.hidden_field(:hotel_id, id: "hotel_id") %>
-      <%= f.hidden_field(:start_visit, id: "start_visit") %>
-      <%= f.hidden_field(:end_visit, id: "end_visit") %>
-      <%= f.hidden_field(:user_id, id: "user_id", value: "#{session[:user_id]}") %>
-      <%= f.submit "BOOK NOW", class: "home_search_button", id: "visit-create" %>
-      <% end %>
-
+      <% if current_user && @visit.user_id%>
+        <h1>Thank you for booking</h1>
+      <% elsif current_user %>
+        <%= form_for(@visit, url: "#", html: {id: "create-visit"}) do |f| %>
+          <%= f.hidden_field(:hotel_id, id: "hotel_id") %>
+          <%= f.hidden_field(:start_visit, id: "start_visit") %>
+          <%= f.hidden_field(:end_visit, id: "end_visit") %>
+          <%= f.hidden_field(:user_id, id: "user_id", value: "#{session[:user_id]}") %>
+          <%= f.submit "BOOK NOW", class: "home_search_button", id: "visit-create" %>
+        <% end %>
       <% else %>
-      <% flash[:message] = "Login or Register to book a hotel!" %>
-      <%= link_to "BOOK NOW", new_user_path, class: "btn btn-primary" %>
+        <% flash[:message] = "Login or Register to book a hotel!" %>
+        <%= link_to "BOOK NOW", new_user_path, class: "btn btn-primary" %>
       <% end %>
+
     </div>
   </div>
 

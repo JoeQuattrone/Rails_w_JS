@@ -53,7 +53,7 @@ class VisitsController < ApplicationController
   def show
     @user = User.find_by(id: params[:user_id])
     @visit = Visit.find_by(id: params[:id])
-    @hotel = @Visit.hotel
+    @hotel = @visit.hotel
   end
 
   def edit

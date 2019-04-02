@@ -25,7 +25,7 @@
     <h5><%= format_start_visit(@visit) %> - <%= format_end_visit(@visit) %></h5>
 
     <%= form_tag ("/users/#{@user.id}/visits/#{@visit.id}"), method: "delete" do %>
-      <%= link_to "MY TRIPS", user_visits_path(@user, @user.visits), class: "btn btn-primary", id: "home-btn" %>
+      <%= link_to "MY TRIPS", user_visits_path(@user), class: "btn btn-primary", id: "home-btn" %>
       <%= submit_tag "DELETE TRIP", class: "btn btn-danger" %>
     <% end %>
   </div>

@@ -26,11 +26,11 @@
       <%= form_tag ("/hotels/#{@hotel.id}/visits/new"), class: "clearfix avail-form" do %>
       <div class="form-group avail-input" id="first-input">
         <%= label_tag(:start_visit, "Check in") %>
-        <%= text_field_tag :start_visit, nil, placeholder: "mm/dd/yy", class: "form-control" %>
+        <%= text_field_tag :start_visit, nil, placeholder: "mm/dd/yyyy", class: "form-control" %>
       </div>
       <div class="form-group avail-input">
         <%= label_tag(:end_visit, "Check out") %>
-        <%= text_field_tag :end_visit, nil, placeholder: "mm/dd/yy", class: "form-control"  %>
+        <%= text_field_tag :end_visit, nil, placeholder: "mm/dd/yyyy", class: "form-control"  %>
       </div>
       <div class="form-group" id="last-fg">
         <%= submit_tag "Search", class: "btn btn-primary", id: "avail-submit" %>
