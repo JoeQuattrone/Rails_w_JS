@@ -47,5 +47,47 @@ class Hotel {
 
     document.querySelector("#hotel-container").innerHTML += template
   }
+}
 
+$(function() {
+  $('#js-search').submit(function(e) {
+    e.preventDefault()
+    document.querySelector("#hotel-container").innerHTML = ""
+    let city = $("#hotel_city").val()
+    let budget = $("#hotel_budget").val()
+    let url = "http://localhost:3000/search"
+    let data = { hotel: {
+      city: city,
+      budget: budget
+    }}
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+      .then(json => json.forEach(function(hotel_data) {
+        let hotel = new Hotel(hotel_data)
+        hotel.render()
+      }))
+  })
+})
+
+class Visit {
+  constructor(hash) {
+    this.id = hash.id
+    this.start_visit = hash.start_visit
+    this.end_visit = hash.end_visit
+    this.user_id = hash.user_id
+    this.created_at = hash.created_at
+    this.updated_at = hash.updated_at
+  }
+
+  render() {
+    let template = `
+      <h4>Thank You For Booking With J-Travel<h4>
+      <h5>${this.start_visit} - ${this.end_visit}</h5>
+    `
+    document.querySelector("#js-render").innerHTML = ''
+    document.querySelector("#js-render").innerHTML += template
+  }
 }

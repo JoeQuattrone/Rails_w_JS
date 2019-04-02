@@ -15,20 +15,92 @@
       </a>
     </div>
   </div>
+  <div id="js-render">
     <h4 class="text-center">Hooray! These dates are available.</h4>
     <div class="availablity-form text-center">
+      <% if @visit.start_visit %>
       <h5><%= format_start_visit(@visit) %> - <%= format_end_visit(@visit) %></h5>
+      <% end %>
 
       <% if current_user %>
-      <%= form_tag("/users/#{session[:user_id]}/visits") do %>
-        <%= hidden_field_tag(:hotel_id, @hotel.id) %>
-        <%= hidden_field_tag(:visit_id, @visit.id) %>
-        <%= submit_tag "BOOK NOW", class: "home_search_button" %>
+      <%= form_for(@visit, url: "#", html: {id: "create-visit"}) do |f| %>
+      <%= f.hidden_field(:hotel_id, id: "hotel_id") %>
+      <%= f.hidden_field(:start_visit, id: "start_visit") %>
+      <%= f.hidden_field(:end_visit, id: "end_visit") %>
+      <%= f.hidden_field(:user_id, id: "user_id", value: "#{session[:user_id]}") %>
+      <%= f.submit "BOOK NOW", class: "home_search_button", id: "visit-create" %>
       <% end %>
 
       <% else %>
-        <% flash[:message] = "Login or Register to book a hotel!" %>
-        <%= link_to "BOOK NOW", new_user_path, class: "btn btn-primary" %>
+      <% flash[:message] = "Login or Register to book a hotel!" %>
+      <%= link_to "BOOK NOW", new_user_path, class: "btn btn-primary" %>
       <% end %>
     </div>
   </div>
+
+</div>
+
+
+  <script
+    src="http://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+  <script>
+    $(function() {
+      $("#create-visit").submit(function(e) {
+        e.preventDefault()
+        let hotel_id = $('#hotel_id').val()
+        let user_id = $('#user_id').val()
+        let start_visit = $('#start_visit').val()
+        let end_visit = $('#end_visit').val()
+        let url = `http://localhost:3000/hotels/${hotel_id}/visits/last`
+        let data = {
+          user_id: user_id,
+          hotel_id: hotel_id,
+          start_visit: start_visit,
+          end_visit: end_visit
+        }
+         // fetch(`http://localhost:3000/hotels/${hotel_id}/visits/last`, {
+         //    method: 'PATCH',
+         //    body: JSON.stringify(data),
+         //    headers: { 'Content-Type': 'application/json' }
+         // })
+         //  .then(res => res.json())
+         //  .then(json => console.log(json))
+         $.ajax({
+            url : url,
+            data : JSON.stringify(data),
+            type : 'POST',
+            contentType : 'application/json',
+            processData: false,
+            dataType: 'json'
+          }).done(function(json) { let visit = new Visit(json)
+            visit.render()
+          })
+      })
+    })
+  </script>
+
+
+  <!-- $(function() {
+    $('form').submit(function(e) {
+      e.preventDefault()
+      document.querySelector("#hotel-container").innerHTML = ""
+      let city = $("#hotel_city").val()
+      let budget = $("#hotel_budget").val()
+      let url = "http://localhost:3000/search"
+      let data = { hotel: {
+        city: city,
+        budget: budget
+      }}
+      fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' }
+      }).then(res => res.json())
+        .then(json => json.forEach(function(hotel_data) {
+          let hotel = new Hotel(hotel_data)
+          hotel.render()
+        }))
+    })
+  }) -->

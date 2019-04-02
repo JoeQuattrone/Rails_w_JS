@@ -21,18 +21,11 @@ class SearchesController < ApplicationController
     render json: @hotels
   end
 
-  def create_visit
 
-  end
 
 
 
   private
-
-# { hotel: {
-#   city:
-#   budget:
-#   }}
 
   def searches_params
     params.require(:hotel).permit(:city, :budget)

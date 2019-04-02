@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   resources :hotels
   resources :hotels, only: [:index] do
     resources :visits, only: [:new]
+    get '/visits/last', to: 'visits#last_visit'
+    post '/visits/last', to: 'visits#create'
   end
 
   resources :users, only: [:show] do
