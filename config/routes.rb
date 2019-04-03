@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show] do
     resources :visits, except: [:new]
+    get '/allvisits', to: 'visits#all_visits_of_user'
+    post 'allvisits', to: 'visits#post_all_visits_of_user'
   end
 
   post "/search", to: 'searches#index'

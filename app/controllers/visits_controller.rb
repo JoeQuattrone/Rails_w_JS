@@ -6,7 +6,7 @@ class VisitsController < ApplicationController
   def index
     @user = User.find_by(id: params[:user_id])
     @visits = @user.visits.all
-    render :layout => "login_register"
+    render layout: "hotels"
   end
 
   def new
@@ -56,18 +56,20 @@ class VisitsController < ApplicationController
     @hotel = @visit.hotel
   end
 
-  def edit
-
-  end
-
-  def update
-
-  end
-
   def destroy
     @user = User.find_by(id: params[:user_id])
     @visit = Visit.find_by(id: params[:id]).delete
     redirect_to user_visits_path(@user)
+  end
+
+  def all_visits_of_user
+    binding.pry
+    @user = User.find_by(id: params[:user_id])
+    @visits = @user.visits.all
+    render json: @visits
+  end
+
+  def post_all_visits_of_user
   end
 
   private

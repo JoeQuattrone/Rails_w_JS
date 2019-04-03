@@ -27,5 +27,10 @@
     <%= form_tag ("/users/#{@user.id}/visits/#{@visit.id}"), method: "delete" do %>
       <%= link_to "MY TRIPS", user_visits_path(@user), class: "btn btn-primary", id: "home-btn" %>
       <%= submit_tag "DELETE TRIP", class: "btn btn-danger" %>
+      <%= link_to "NEXT VISIT", "#", class: "btn btn-primary", id: "next-btn" %>
     <% end %>
   </div>
+
+  <script type="text/javascript" charset="utf-8">
+
+  </script>
