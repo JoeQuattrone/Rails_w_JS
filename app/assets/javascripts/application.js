@@ -86,7 +86,7 @@ class Visit {
       <h5>${this.start_visit} - ${this.end_visit}</h5>
       <br>
       <form action="/users/${this.user_id}/visits/${this.id}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="/52zdE7Gqmkgi3Sa7TL4WqUN3MrKl/eyMRsY/oIj7q7chWliqv+Z89E+2ZwFYbaWAAdgzhc6Vqd951RIpIzWSQ==">
-      <a class="btn btn-primary" id="home-btn" href="/users/1/visits">MY TRIPS</a>
+      <a class="btn btn-primary" id="home-btn" href="/users/${this.user_id}/visits">MY TRIPS</a>
       <input type="submit" name="commit" value="DELETE TRIP" class="btn btn-danger">
       </form>
     </div>
@@ -105,19 +105,27 @@ class VisitWithHotel {
     this.created_at = hash.created_at
     this.updated_at = hash.updated_at
     this.hotel = {
-      "address" = hash.hotel.address,
-      "city" = hash.hotel.city,
-      "id" = hash.hotel.id,
-      "image_url" = hash.hotel.image_url,
-      "name" = hash.hotel.name,
-      "price" = hash.hotel.price
+      "address": hash.hotel.address,
+      "city": hash.hotel.city,
+      "id": hash.hotel.id,
+      "image_url": hash.hotel.image_url,
+      "name": hash.hotel.name,
+      "price": hash.hotel.price
     }
   }
   nextVisit() {
     $('#visit_id').val(this.id)
-    let template = `<h1>${this.id}</h1>`
-    document.querySelector('.container').innerHTML = template
     $('#hotel-img').html(`<img src="${this.hotel.image_url}">`)
+    $('#hotel-info').html(`
+      <h4>${this.hotel.name}</h4>
+      <p>${this.hotel.city.toUpperCase()}</p>
+      <p>${this.hotel.address}</p>
+      `)
+    $('#hotel-price').html(`
+      <h2>$${this.hotel.price}</h2>
+      <p>per night</p>
+      `)
+    $('#visit-dates').html(`${this.start_visit} - ${this.end_visit}`)
 
   }
 }
