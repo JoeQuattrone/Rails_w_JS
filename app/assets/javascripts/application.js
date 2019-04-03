@@ -19,14 +19,16 @@ class Hotel {
     this.image_url = hash.image_url
     this.name = hash.name
     this.price = hash.price
+    this.visits = hash.visits
   }
 
   render() {
+    let visits = this.visits.length
     let template =  `<div class="row hotel-row">
       <div class="col-sm" id="image">
         <img src="${this.image_url}">
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6" id="hotel-info-list-${this.id}">
         <a href="hotels/${this.id}" class="hotel-link">
           <h4>${this.name}</h4>
           <p>${this.city}</p>
@@ -42,6 +44,9 @@ class Hotel {
     </div>`
 
     document.querySelector("#hotel-container").innerHTML += template
+    if(visits > 0) {
+      $(`#hotel-info-list-${this.id}`).append(`<p>${visits} other's have booked this hotel!</p>`)
+    }
   }
 }
 
@@ -62,6 +67,7 @@ $(function() {
       headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json())
       .then(json => json.forEach(function(hotel_data) {
+        console.log(json)
         let hotel = new Hotel(hotel_data)
         hotel.render()
       }))
@@ -126,6 +132,5 @@ class VisitWithHotel {
       <p>per night</p>
       `)
     $('#visit-dates').html(`${this.start_visit} - ${this.end_visit}`)
-
   }
 }

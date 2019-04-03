@@ -13,12 +13,12 @@ class SearchesController < ApplicationController
     if !budget.empty?
       @hotels = @hotels.query_by_price(budget)
     end
-    render json: @hotels
+    render json: @hotels, each_serializer: SearchesSerializer, root: false
   end
 
   def all_hotels
     @hotels = Hotel.all
-    render json: @hotels
+    render json: @hotels, each_serializer: SearchesSerializer, root: false
   end
 
 
