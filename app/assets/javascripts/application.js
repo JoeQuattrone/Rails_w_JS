@@ -78,6 +78,7 @@ class Visit {
     this.updated_at = hash.updated_at
   }
 
+
   render() {
     let template = `
     <div class="text-center">
@@ -92,5 +93,31 @@ class Visit {
     `
     document.querySelector("#js-render").innerHTML = ''
     document.querySelector("#js-render").innerHTML += template
+  }
+}
+
+class VisitWithHotel {
+  constructor(hash) {
+    this.id = hash.id
+    this.start_visit = hash.start_visit
+    this.end_visit = hash.end_visit
+    this.user_id = hash.user_id
+    this.created_at = hash.created_at
+    this.updated_at = hash.updated_at
+    this.hotel = {
+      "address" = hash.hotel.address,
+      "city" = hash.hotel.city,
+      "id" = hash.hotel.id,
+      "image_url" = hash.hotel.image_url,
+      "name" = hash.hotel.name,
+      "price" = hash.hotel.price
+    }
+  }
+  nextVisit() {
+    $('#visit_id').val(this.id)
+    let template = `<h1>${this.id}</h1>`
+    document.querySelector('.container').innerHTML = template
+    $('#hotel-img').html(`<img src="${this.hotel.image_url}">`)
+
   }
 }

@@ -62,14 +62,16 @@ class VisitsController < ApplicationController
     redirect_to user_visits_path(@user)
   end
 
-  def all_visits_of_user
-    binding.pry
-    @user = User.find_by(id: params[:user_id])
-    @visits = @user.visits.all
-    render json: @visits
-  end
 
-  def post_all_visits_of_user
+  def next_visit
+    @user = User.find(params[:user_id])
+    next_id = @user.visit_ids[@user.visit_ids.index(params[:id].to_i).next]
+    if !next_id
+      next_id = @user.visits.first.id
+    end
+    @visit = Visit.find(next_id)
+    @hotel = @visit.hotel
+    render json: @visit
   end
 
   private

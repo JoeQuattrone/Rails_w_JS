@@ -4,7 +4,7 @@
   <% end %>
   <div class="row hotel-row-show align-items-center">
     <hr>
-    <div class="col-sm">
+    <div class="col-sm" id="hotel-img">
       <%= image_tag (@hotel.image_url), alt: "#{@hotel.name}" %>
     </div>
     <div class="col-md-6">
@@ -27,10 +27,66 @@
     <%= form_tag ("/users/#{@user.id}/visits/#{@visit.id}"), method: "delete" do %>
       <%= link_to "MY TRIPS", user_visits_path(@user), class: "btn btn-primary", id: "home-btn" %>
       <%= submit_tag "DELETE TRIP", class: "btn btn-danger" %>
+      <%= hidden_field_tag "user_id", "#{@user.id}" %>
+      <%= hidden_field_tag "visit_id", "#{@visit.id}" %>
       <%= link_to "NEXT VISIT", "#", class: "btn btn-primary", id: "next-btn" %>
     <% end %>
   </div>
 
-  <script type="text/javascript" charset="utf-8">
 
+  <script
+    src="http://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+
+  <script type="text/javascript" charset="utf-8">
+    $(function() {
+      $('#next-btn').click(function(e) {
+        e.preventDefault()
+        let user_id = $('#user_id').val()
+        let visit_id = $('#visit_id').val()
+        let url = `http://localhost:3000/users/${user_id}/visits/${visit_id}/next`
+        fetch(url)
+          .then(res => res.json())
+          .then(function(json) {
+            console.log(json)
+            let visit = new VisitWithHotel(json)
+            visit.nextVisit()
+          })
+      })
+    })
   </script>
+
+  <!-- $(function() {
+    $("#create-visit").submit(function(e) {
+      e.preventDefault()
+      let hotel_id = $('#hotel_id').val()
+      let user_id = $('#user_id').val()
+      let start_visit = $('#start_visit').val()
+      let end_visit = $('#end_visit').val()
+      let url = `http://localhost:3000/hotels/${hotel_id}/visits/last`
+      let data = {
+        user_id: user_id,
+        hotel_id: hotel_id,
+        start_visit: start_visit,
+        end_visit: end_visit
+      }
+       // fetch(`http://localhost:3000/hotels/${hotel_id}/visits/last`, {
+       //    method: 'PATCH',
+       //    body: JSON.stringify(data),
+       //    headers: { 'Content-Type': 'application/json' }
+       // })
+       //  .then(res => res.json())
+       //  .then(json => console.log(json))
+       $.ajax({
+          url : url,
+          data : JSON.stringify(data),
+          type : 'POST',
+          contentType : 'application/json',
+          processData: false,
+          dataType: 'json'
+        }).done(function(json) { let visit = new Visit(json)
+          visit.render()
+        })
+    })
+  }) -->
