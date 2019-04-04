@@ -5,5 +5,24 @@
 <% end %>
 
 <div class="container hotels-wrapper" id="hotel-container">
-
+  <% @hotels.each do |hotel| %>
+  <div class="row hotel-row">
+    <div class="col-sm" id="image">
+      <%= image_tag(hotel.image_url) %>
+    </div>
+    <div class="col-md-6" id="hotel-info-list-<%= hotel.id %>">
+      <a href="hotels/<%= hotel.id %>" class="hotel-link">
+        <h4><%= hotel.name %></h4>
+        <p><%= hotel.city %></p>
+        <p><%= hotel.address %></p>
+      </a>
+    </div>
+    <div class="col-sm">
+      <a href="hotels/<%= hotel.id %>">
+        <h2 class="price">$<%= hotel.price %></h2>
+        <p>per night</p>
+      </a>
+    </div>
+  </div>
+<% end %>
 </div>

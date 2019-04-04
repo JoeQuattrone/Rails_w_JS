@@ -66,13 +66,14 @@ $(function() {
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json())
-      .then(json => json.forEach(function(hotel_data) {
-        console.log(json)
+      .then(function(json) {
+        document.querySelector("#hotel-container").innerHTML = ""
+        json.forEach(function(hotel_data) {
         let hotel = new Hotel(hotel_data)
-        hotel.render()
-      }))
+        hotel.render() })
+      })
+    })
   })
-})
 
 class Visit {
   constructor(hash) {
