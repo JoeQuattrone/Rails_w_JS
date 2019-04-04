@@ -49,44 +49,9 @@
         fetch(url)
           .then(res => res.json())
           .then(function(json) {
-            console.log(json)
             let visit = new VisitWithHotel(json)
             visit.nextVisit()
           })
       })
     })
   </script>
-
-  <!-- $(function() {
-    $("#create-visit").submit(function(e) {
-      e.preventDefault()
-      let hotel_id = $('#hotel_id').val()
-      let user_id = $('#user_id').val()
-      let start_visit = $('#start_visit').val()
-      let end_visit = $('#end_visit').val()
-      let url = `http://localhost:3000/hotels/${hotel_id}/visits/last`
-      let data = {
-        user_id: user_id,
-        hotel_id: hotel_id,
-        start_visit: start_visit,
-        end_visit: end_visit
-      }
-       // fetch(`http://localhost:3000/hotels/${hotel_id}/visits/last`, {
-       //    method: 'PATCH',
-       //    body: JSON.stringify(data),
-       //    headers: { 'Content-Type': 'application/json' }
-       // })
-       //  .then(res => res.json())
-       //  .then(json => console.log(json))
-       $.ajax({
-          url : url,
-          data : JSON.stringify(data),
-          type : 'POST',
-          contentType : 'application/json',
-          processData: false,
-          dataType: 'json'
-        }).done(function(json) { let visit = new Visit(json)
-          visit.render()
-        })
-    })
-  }) -->
