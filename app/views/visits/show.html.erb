@@ -28,8 +28,8 @@
       <% if @user.visits.length > 1 %>
         <%= hidden_field_tag "user_id", "#{@user.id}" %>
         <%= hidden_field_tag "visit_id", "#{@visit.id}" %>
-        <%= link_to "NEXT VISIT", "#", class: "btn btn-primary", id: "next-btn" %>
-      <% end %>  
+        <%= link_to "NEXT TRIP", "#", class: "btn btn-primary", id: "next-btn" %>
+      <% end %>
     <% end %>
   </div>
 
