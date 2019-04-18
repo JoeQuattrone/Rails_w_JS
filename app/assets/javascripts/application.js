@@ -1,4 +1,9 @@
 
+function formatDate(date) {
+
+  return `${date.split('-')[1]}/${date.split('-')[2].split('T')[0]}/${date.split('-')[0]}`
+}
+
 class Hotel {
   constructor(hash) {
     this.address = hash.address
@@ -77,7 +82,7 @@ class Visit {
     let template = `
     <div class="text-center">
       <h4>Thank You For Booking With J-Travel<h4>
-      <h5>${this.start_visit} - ${this.end_visit}</h5>
+      <h5>${formatDate(this.start_visit)} - ${formatDate(this.end_visit)}</h5>
       <br>
       <form action="/users/${this.user_id}/visits/${this.id}" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="delete"><input type="hidden" name="authenticity_token" value="/52zdE7Gqmkgi3Sa7TL4WqUN3MrKl/eyMRsY/oIj7q7chWliqv+Z89E+2ZwFYbaWAAdgzhc6Vqd951RIpIzWSQ==">
       <a class="btn btn-primary" id="home-btn" href="/users/${this.user_id}/visits">MY TRIPS</a>
@@ -118,6 +123,6 @@ class VisitWithHotel {
       <h2>$${this.hotel.price}</h2>
       <p>per night</p>
       `)
-    $('#visit-dates').html(`${this.start_visit} - ${this.end_visit}`)
+    $('#visit-dates').html(`${formatDate(this.start_visit)} - ${formatDate(this.end_visit)}`)
   }
 }
