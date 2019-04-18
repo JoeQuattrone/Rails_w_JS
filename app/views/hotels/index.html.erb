@@ -1,10 +1,20 @@
-<%= form_tag "/search", id: "js-search" do %>
-  <%= text_field_tag "hotel[city]", nil, placeholder: "City" %>
-  <%= number_field_tag "hotel[budget]", nil, placeholder: "Budget" %>
-  <%= submit_tag "search" %>
-<% end %>
 
 <div class="container hotels-wrapper" id="hotel-container">
+  <div style="margin: 0, auto;">
+    <%= form_tag "/search", id: "js-search", class: "form-row " do %>
+    <div class="col-md-2"></div>
+    <div class="col-md-3">
+      <%= text_field_tag "hotel[city]", nil, placeholder: "City", class: "form-control search-form" %>
+    </div>
+    <div class="col-md-3">
+      <%= number_field_tag "hotel[budget]", nil, placeholder: "Budget", class: "form-control search-form" %>
+    </div>
+    <%= submit_tag "search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+
+
+
   <% @hotels.each do |hotel| %>
   <div class="row hotel-row">
     <div class="col-sm" id="image">

@@ -22,6 +22,7 @@ class Hotel {
           <p>${this.city}</p>
           <p>${this.address}</p>
         </a>
+        <button class="like-button">0</button>
       </div>
       <div class="col-sm">
         <a href="hotels/${this.id}">
@@ -58,6 +59,7 @@ $(function() {
         json.forEach(function(hotel_data) {
         let hotel = new Hotel(hotel_data)
         hotel.render() })
+        $('.like-button').click(clickLike)
       })
     })
   })
@@ -85,8 +87,7 @@ class Visit {
       </form>
     </div>
     `
-    document.querySelector("#js-render").innerHTML = ''
-    document.querySelector("#js-render").innerHTML += template
+    document.querySelector("#js-render").innerHTML = template
   }
 }
 
