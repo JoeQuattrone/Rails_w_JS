@@ -14,7 +14,7 @@ class HotelsController < ApplicationController
 
     @hotels = Hotel.query_by_city(city_name)
     if @hotels.empty?
-      Hotel.get_data(city_name)
+      Hotel.get_data2(city_name)
       @hotels = Hotel.query_by_city(city_name)
     end
 

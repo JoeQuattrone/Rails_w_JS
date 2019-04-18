@@ -4,8 +4,6 @@ require 'rest-client'
 require 'net/http'
 require 'json'
 
-
-
 class Hotel < ApplicationRecord
   has_many :users, through: :visits
   has_many :visits
@@ -77,6 +75,4 @@ class Hotel < ApplicationRecord
       Hotel.create(name: hotel_name, image_url: img_url, price: hotel_price, address: hotel_address, city: city)
     end
   end
-
-
 end
