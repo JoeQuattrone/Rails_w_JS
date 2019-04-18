@@ -22,9 +22,8 @@ class Hotel {
           <p>${this.city}</p>
           <p>${this.address}</p>
         </a>
-        <button class="like-button">0</button>
       </div>
-      <div class="col-sm">
+      <div class="col-sm price-div">
         <a href="hotels/${this.id}">
           <h2 class="price">$${this.price}</h2>
           <p>per night</p>
@@ -42,7 +41,6 @@ class Hotel {
 $(function() {
   $('#js-search').submit(function(e) {
     e.preventDefault()
-    document.querySelector("#hotel-container").innerHTML = ""
     let city = $("#hotel_city").val()
     let budget = $("#hotel_budget").val()
     let url = "http://localhost:3000/search"
@@ -50,6 +48,7 @@ $(function() {
       city: city,
       budget: budget
     }}
+    document.querySelector("#hotel-container").innerHTML = ""
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -59,7 +58,6 @@ $(function() {
         json.forEach(function(hotel_data) {
         let hotel = new Hotel(hotel_data)
         hotel.render() })
-        $('.like-button').click(clickLike)
       })
     })
   })

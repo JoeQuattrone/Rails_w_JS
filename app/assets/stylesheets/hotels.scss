@@ -18,8 +18,8 @@ header#hotels-header {
 
 
 #js-search {
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top: 6%;
+  margin-bottom: 6%;
 }
 
 h2.price {
@@ -37,8 +37,6 @@ h2.price {
   color:  #007bff;
 }
 
-.hotels-wrapper {
-}
 
 .hotel-image-wrapper {
   float: left;
@@ -127,5 +125,19 @@ body > div > div.container > div.availablity-form.text-center > h5 {
     width: 50%;
     margin: 0 auto;
     clear:both;
+  }
+}
+
+@media (max-width: 580px) {
+  #js-search > div.col-sm-2 {
+    display: none;
+  }
+  #js-search > input.btn.btn-primary {
+    width: 97%;
+    margin-left: 6px;
+  }
+
+  .price-div {
+    text-align: right;
   }
 }

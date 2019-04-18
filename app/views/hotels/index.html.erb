@@ -1,38 +1,35 @@
-
-<div class="container hotels-wrapper" id="hotel-container">
-  <div style="margin: 0, auto;">
+<div class="container hotels-wrapper">
     <%= form_tag "/search", id: "js-search", class: "form-row " do %>
-    <div class="col-md-2"></div>
-    <div class="col-md-3">
-      <%= text_field_tag "hotel[city]", nil, placeholder: "City", class: "form-control search-form" %>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-3">
+      <%= text_field_tag "hotel[city]", nil, placeholder: "City", class: "form-control search-form", id: "hotel_city" %>
     </div>
-    <div class="col-md-3">
-      <%= number_field_tag "hotel[budget]", nil, placeholder: "Budget", class: "form-control search-form" %>
+    <div class="col-sm-3">
+      <%= number_field_tag "hotel[budget]", nil, placeholder: "Budget", class: "form-control search-form", id: "hotel_budget" %>
     </div>
     <%= submit_tag "search", class: "btn btn-primary" %>
     <% end %>
+
+  <div id="hotel-container">
+    <% @hotels.each do |hotel| %>
+    <div class="row hotel-row">
+      <div class="col-sm" id="image">
+        <%= image_tag(hotel.image_url) %>
+      </div>
+      <div class="col-md-6" id="hotel-info-list-<%= hotel.id %>">
+        <a href="hotels/<%= hotel.id %>" class="hotel-link">
+          <h4><%= hotel.name %></h4>
+          <p><%= hotel.city %></p>
+          <p><%= hotel.address %></p>
+        </a>
+      </div>
+      <div class="col-sm price-div">
+        <a href="hotels/<%= hotel.id %>">
+          <h2 class="price">$<%= hotel.price %></h2>
+          <p>per night</p>
+        </a>
+      </div>
+    </div>
+    <% end %>
   </div>
-
-
-
-  <% @hotels.each do |hotel| %>
-  <div class="row hotel-row">
-    <div class="col-sm" id="image">
-      <%= image_tag(hotel.image_url) %>
-    </div>
-    <div class="col-md-6" id="hotel-info-list-<%= hotel.id %>">
-      <a href="hotels/<%= hotel.id %>" class="hotel-link">
-        <h4><%= hotel.name %></h4>
-        <p><%= hotel.city %></p>
-        <p><%= hotel.address %></p>
-      </a>
-    </div>
-    <div class="col-sm">
-      <a href="hotels/<%= hotel.id %>">
-        <h2 class="price">$<%= hotel.price %></h2>
-        <p>per night</p>
-      </a>
-    </div>
-  </div>
-<% end %>
 </div>
