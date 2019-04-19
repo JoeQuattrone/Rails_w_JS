@@ -48,7 +48,7 @@ $(function() {
     e.preventDefault()
     let city = $("#hotel_city").val()
     let budget = $("#hotel_budget").val()
-    let url = "http://localhost:3000/search"
+    let url = "https://j-travel.herokuapp.com/search"
     let data = { hotel: {
       city: city,
       budget: budget
