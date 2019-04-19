@@ -5,6 +5,10 @@ function formatDate(date) {
   return `${date.split('-')[1]}/${date.split('-')[2].split('T')[0]}/${date.split('-')[0]}`
 }
 
+function loadMsg() {
+  document.querySelector("#hotel-container").innerHTML = "<h4 style='text-align: center;'>This may take awhile...<h4>"
+}
+
 class Hotel {
   constructor(hash) {
     this.address = hash.address
@@ -117,17 +121,17 @@ $(function() {
       city: city,
       budget: budget
     }}
-    document.querySelector("#hotel-container").innerHTML = ""
+    loadMsg()
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json())
-    .then(function(json) {
-      console.log(json)
-      json.forEach(function(hotel_data) {
-        let hotel = new Hotel(hotel_data)
-        hotel.render() })
+      .then(function(json) {
+        document.querySelector("#hotel-container").innerHTML = ""
+        json.forEach(function(hotel_data) {
+          let hotel = new Hotel(hotel_data)
+          hotel.render() })
       })
     })
   })
