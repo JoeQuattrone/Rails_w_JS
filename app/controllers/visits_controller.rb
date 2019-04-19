@@ -60,7 +60,7 @@ class VisitsController < ApplicationController
       @visit = Visit.find_by(id: params[:id])
       @hotel = @visit.hotel
     else
-      redirect_to root_path  
+      redirect_to root_path
     end
   end
 

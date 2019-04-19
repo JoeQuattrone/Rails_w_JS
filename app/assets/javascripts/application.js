@@ -1,4 +1,5 @@
-
+const BASE_URL = 'https://j-travel.herokuapp.com'
+// const BASE_URL = 'http://localhost:3000'
 function formatDate(date) {
 
   return `${date.split('-')[1]}/${date.split('-')[2].split('T')[0]}/${date.split('-')[0]}`
@@ -43,29 +44,6 @@ class Hotel {
   }
 }
 
-$(function() {
-  $('#js-search').submit(function(e) {
-    e.preventDefault()
-    let city = $("#hotel_city").val()
-    let budget = $("#hotel_budget").val()
-    let url = "https://j-travel.herokuapp.com/search"
-    let data = { hotel: {
-      city: city,
-      budget: budget
-    }}
-    document.querySelector("#hotel-container").innerHTML = ""
-    fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: { 'Content-Type': 'application/json' }
-    }).then(res => res.json())
-      .then(function(json) {
-        json.forEach(function(hotel_data) {
-        let hotel = new Hotel(hotel_data)
-        hotel.render() })
-      })
-    })
-  })
 
 class Visit {
   constructor(hash) {
@@ -126,3 +104,57 @@ class VisitWithHotel {
     $('#visit-dates').html(`${formatDate(this.start_visit)} - ${formatDate(this.end_visit)}`)
   }
 }
+
+
+
+$(function() {
+  $('#js-search').submit(function(e) {
+    e.preventDefault()
+    let city = $("#hotel_city").val()
+    let budget = $("#hotel_budget").val()
+    let url = `${BASE_URL}/search`
+    let data = { hotel: {
+      city: city,
+      budget: budget
+    }}
+    document.querySelector("#hotel-container").innerHTML = ""
+    fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: { 'Content-Type': 'application/json' }
+    }).then(res => res.json())
+    .then(function(json) {
+      json.forEach(function(hotel_data) {
+        let hotel = new Hotel(hotel_data)
+        hotel.render() })
+      })
+    })
+  })
+
+
+$(function() {
+  $("#create-visit").submit(function(e) {
+    e.preventDefault()
+    let hotel_id = $('#hotel_id').val()
+    let user_id = $('#user_id').val()
+    let start_visit = $('#start_visit').val()
+    let end_visit = $('#end_visit').val()
+    let url = `${BASE_URL}/hotels/${hotel_id}/visits/last`
+    let data = {
+      user_id: user_id,
+      hotel_id: hotel_id,
+      start_visit: start_visit,
+      end_visit: end_visit
+    }
+     $.ajax({
+        url : url,
+        data : JSON.stringify(data),
+        type : 'POST',
+        contentType : 'application/json',
+        processData: false,
+        dataType: 'json'
+      }).done(function(json) { let visit = new Visit(json)
+        visit.render()
+      })
+  })
+})
