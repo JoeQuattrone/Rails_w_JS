@@ -32,26 +32,3 @@
       <% end %>
     <% end %>
   </div>
-
-
-  <script
-    src="http://code.jquery.com/jquery-3.2.1.js"
-    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-    crossorigin="anonymous"></script>
-
-  <script type="text/javascript" charset="utf-8">
-    $(function() {
-      $('#next-btn').click(function(e) {
-        e.preventDefault()
-        let user_id = $('#user_id').val()
-        let visit_id = $('#visit_id').val()
-        let url = `http://localhost:3000/users/${user_id}/visits/${visit_id}/next`
-        fetch(url)
-          .then(res => res.json())
-          .then(function(json) {
-            let visit = new VisitWithHotel(json)
-            visit.nextVisit()
-          })
-      })
-    })
-  </script>

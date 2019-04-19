@@ -124,6 +124,7 @@ $(function() {
       headers: { 'Content-Type': 'application/json' }
     }).then(res => res.json())
     .then(function(json) {
+      console.log(json)
       json.forEach(function(hotel_data) {
         let hotel = new Hotel(hotel_data)
         hotel.render() })
@@ -155,6 +156,22 @@ $(function() {
         dataType: 'json'
       }).done(function(json) { let visit = new Visit(json)
         visit.render()
+      })
+  })
+})
+
+
+$(function() {
+  $('#next-btn').click(function(e) {
+    e.preventDefault()
+    let user_id = $('#user_id').val()
+    let visit_id = $('#visit_id').val()
+    let url = `${BASE_URL}/users/${user_id}/visits/${visit_id}/next`
+    fetch(url)
+      .then(res => res.json())
+      .then(function(json) {
+        let visit = new VisitWithHotel(json)
+        visit.nextVisit()
       })
   })
 })
