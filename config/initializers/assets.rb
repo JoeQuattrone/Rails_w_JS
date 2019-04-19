@@ -31,6 +31,8 @@ Rails.application.config.assets.precompile += %w( jquery.scrollTo.min.js )
 Rails.application.config.assets.precompile += %w( easing.js )
 Rails.application.config.assets.precompile += %w( parallax.min.js )
 Rails.application.config.assets.precompile += %w( custom.js )
+Rails.application.config.assets.precompile += %w( application.js )
+
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
