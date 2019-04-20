@@ -48,7 +48,6 @@ class Hotel < ApplicationRecord
     uri.query = URI.encode_www_form({
     token: 'ySdaNYV4217OA4IhAPXhVQ',
     user_agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1.1 Safari/605.1.15',
-
     url: "https://www.hotels.com/search.do?q-destination=#{city}
   "})
 

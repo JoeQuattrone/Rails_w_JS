@@ -110,7 +110,7 @@ class VisitWithHotel {
 }
 
 
-
+// search for hotels
 $(function() {
   $('#js-search').submit(function(e) {
     e.preventDefault()
@@ -136,7 +136,7 @@ $(function() {
     })
   })
 
-
+// create visit via JS
 $(function() {
   $("#create-visit").submit(function(e) {
     e.preventDefault()
@@ -164,7 +164,7 @@ $(function() {
   })
 })
 
-
+// cycle through visits
 $(function() {
   $('#next-btn').click(function(e) {
     e.preventDefault()

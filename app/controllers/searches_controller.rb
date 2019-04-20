@@ -8,11 +8,9 @@ class SearchesController < ApplicationController
       Hotel.get_data2(city_name)
       @hotels = Hotel.query_by_city(city_name)
     end
-
     #querys hotel on price if budget is submitted
-    if !budget.empty?
-      @hotels = @hotels.query_by_price(budget)
-    end
+    @hotels = @hotels.query_by_price(budget) if !budget.empty?
+
     render json: @hotels, each_serializer: SearchesSerializer
   end
 

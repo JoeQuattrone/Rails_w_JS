@@ -3,8 +3,11 @@ class HotelsController < ApplicationController
   layout "hotels"
 
   def index
+
     if session[:hotel_search]
       @hotels = Hotel.query_by_city(session[:hotel_search])
+    else
+      redirect_to root_path
     end
   end
 
@@ -19,16 +22,15 @@ class HotelsController < ApplicationController
     end
 
     #querys hotel on price if budget is submitted
-    if !budget.empty?
-      @hotels = @hotels.query_by_price(budget)
-    end
-
+    @hotels = @hotels.query_by_price(budget) if !budget.empty?
     session[:hotel_search] = city_name
+
     if @hotels.empty?
       flash[:message] = "Please enter a valid city"
       redirect_to root_path
     else
-      render 'hotels/index'
+      # render 'hotels/index'
+      redirect_to hotels_path
     end
   end
 
