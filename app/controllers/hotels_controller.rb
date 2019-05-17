@@ -3,7 +3,6 @@ class HotelsController < ApplicationController
   layout "hotels"
 
   def index
-
     if session[:hotel_search]
       @hotels = Hotel.query_by_city(session[:hotel_search])
     else
@@ -48,18 +47,6 @@ class HotelsController < ApplicationController
       flash[:message] = "Sorry we couldn't find that hotel"
       redirect_to root_path
     end
-  end
-
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def destroy
-
   end
 
   private

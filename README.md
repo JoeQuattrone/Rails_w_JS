@@ -4,6 +4,14 @@ J-Travel is a mock travel website with real data from hotels.com that mimics a r
 
 This website is intended for demonstration purposes only and will no be monetized.
 
+## Preview
+
+<img width="1892" alt="Screen Shot 2019-05-16 at 9 36 13 PM" src="https://user-images.githubusercontent.com/43793510/57897429-aab94300-7822-11e9-82d7-6f8bc844e2c4.png">
+
+[J-Travel](https://j-travel.herokuapp.com/)
+
+[Video Tutorial](https://www.youtube.com/watch?v=ZH57O1qmbZc)
+
 ## Ruby version
   - 2.5.3
 ## Technologies Used

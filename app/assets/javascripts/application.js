@@ -1,7 +1,6 @@
 const BASE_URL = 'https://j-travel.herokuapp.com'
 // const BASE_URL = 'http://localhost:3000'
 function formatDate(date) {
-
   return `${date.split('-')[1]}/${date.split('-')[2].split('T')[0]}/${date.split('-')[0]}`
 }
 
